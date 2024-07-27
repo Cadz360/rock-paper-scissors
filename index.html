@@ -1,58 +1,27 @@
-<script>
-    const choices = ["rock", "paper", "scissors"];
-
-
-
-    function getComputerChoice() {
-        return choices[Math.floor(Math.random() * 3)]
-    }
-
-    function getHumanChoice() {
-        return prompt("What will you use? Scissors, Rock, or Paper?").toLowerCase()
-    }
-
-    function playRound(humanChoice, computerChoice) {
-        switch (true) {
-            case (humanChoice === computerChoice) :
-                console.log('This round result is a draw!')
-                break;
-            case (humanChoice === 'scissors' && computerChoice === 'paper') :
-            case (humanChoice === 'paper' && computerChoice === 'rock') :
-            case (humanChoice === 'rock' && computerChoice === 'scissors') :
-                console.log('You won this round!');
-                return 'win'
-                break;
-            case (humanChoice === 'scissors' && computerChoice === 'rock') :
-            case (humanChoice === 'paper' && computerChoice === 'scissors') :
-            case (humanChoice === 'rock' && computerChoice === 'paper') :
-                console.log('You lost this round!');
-                return 'loss'
-                break;
-
-            default: 
-                console.log('Invalid input! Try again.')
-        }
-    }
-
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-    for(let i = 0; i < 5; i++){
-        const gameResult = playRound(getHumanChoice(), getComputerChoice());
-        if (gameResult === 'win') {
-            humanScore++;
-            console.log(humanScore) 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="player-choice">
+            <p>Choose:</p>
+            <ul>
+                <li><img src="./images/rock.png" height="200" width="150" alt="rock">
+                <a href="https://www.freepik.com/free-vector/protest-fist-illustration_138418244.htm#fromView=search&page=1&position=32&uuid=ec1b8c9b-25df-4574-9f1d-18dd0b9efd0b">Image by grmarc on Freepik</a></li>
+                <li><img src="./images/paper.jpg" height="200" width="150" alt="paper">
+                <a href="https://www.freepik.com/free-vector/hand-is-shown-with-wristband-it_193444547.htm#fromView=search&page=1&position=0&uuid=c580f5ee-e91e-41d6-b4a5-3eb35d0f7714">Image by AndreaCharlesta on Freepik</a></li>
+                <li><img src="./images/scissors.png" height="200" width="150" alt="scissors">
+                <a href='https://pngtree.com/freepng/gesture-scissors-hand-cartoon-pose_4641609.html'>png image by 588ku from pngtree.com/</a></li>
+            </ul>
+        </div>
+        <div class="computer-choice"></div>
+    </div>
     
-        } else if (gameResult === 'loss') {
-            computerScore++
-            console.log(computerScore)
-        } else if (gameResult === null || undefined) {
-            return console.log('Something wrong occured. Try again')
-        }
-    }
-    return humanScore > computerScore ? console.log('You won the game!') : console.log('You lost. Try again next time')
-}
-
-playGame();
-
-</script>
+<script src="./app.js"></script>
+</body>
+</html>
