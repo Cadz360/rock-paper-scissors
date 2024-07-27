@@ -1,9 +1,24 @@
-    const choices = ["rock", "paper", "scissors"];
+    const choices = document.querySelector("ul")
 
+    choices.addEventListener('click', (event) => {
+        let target = event.target;
 
+        switch(target.id) {
+            case 'rock':
+                playRound('rock', getComputerChoice())
+                break;
+            case 'paper':
+                playRound('paper', getComputerChoice())
+                break;
+            case 'scissors':
+                playRound('scissors', getComputerChoice())
+                break;
+        }
+
+    })
 
     function getComputerChoice() {
-        return choices[Math.floor(Math.random() * 3)]
+        return ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)]
     }
 
     function getHumanChoice() {
@@ -20,13 +35,11 @@
             case (humanChoice === 'rock' && computerChoice === 'scissors') :
                 console.log('You won this round!');
                 return 'win'
-                break;
             case (humanChoice === 'scissors' && computerChoice === 'rock') :
             case (humanChoice === 'paper' && computerChoice === 'scissors') :
             case (humanChoice === 'rock' && computerChoice === 'paper') :
                 console.log('You lost this round!');
                 return 'loss'
-                break;
 
             default: 
                 console.log('Invalid input! Try again.')
@@ -52,4 +65,4 @@
 //     return humanScore > computerScore ? console.log('You won the game!') : console.log('You lost. Try again next time')
 // }
 
-playGame();
+// playGame();
