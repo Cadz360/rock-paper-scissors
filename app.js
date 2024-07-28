@@ -2,6 +2,9 @@
     const computerChoiceImg = document.querySelector(".computer-choice-img")
     const gameScorer = document.querySelector(".game-scorer")
 
+    let humanScore = 0;
+    let computerScore = 0;
+
     choices.addEventListener('click', (event) => {
         let target = event.target;
         switch(target.id) {
@@ -34,25 +37,41 @@
     // }
 
     function playRound(humanChoice, computerChoice) {
-        switch (true) {
+            switch (true) {
             case (humanChoice === computerChoice) :
-                gameScorer.textContent = 'This round result is a draw!'
+                gameScorer.textContent = `This round result is a draw! The current score is ${humanScore} -- ${computerScore}`
                 break;
             case (humanChoice === 'scissors' && computerChoice === 'paper') :
             case (humanChoice === 'paper' && computerChoice === 'rock') :
             case (humanChoice === 'rock' && computerChoice === 'scissors') :
-                gameScorer.textContent = 'You won this round!';
-                return 'win'
+                gameScorer.textContent = `You won this round! The current score is ${humanScore} -- ${computerScore}`;
+                humanScore++;
+                break;
             case (humanChoice === 'scissors' && computerChoice === 'rock') :
             case (humanChoice === 'paper' && computerChoice === 'scissors') :
             case (humanChoice === 'rock' && computerChoice === 'paper') :
-                gameScorer.textContent = 'You lost this round!';
-                return 'loss'
-
+                gameScorer.textContent = `You won this round! The current score is ${humanScore} -- ${computerScore}`;
+                computerScore++;
+                break;
             default: 
-                gameScorer.textContent('Invalid input! Try again.')
+                gameScorer.textContent = 'Invalid input! Try again.'
+                break;
+        }
+        if (humanScore === 5) {
+            gameScorer.textContent = 'Congratulations! You won the game!'
+            computerScore = 0;
+            humanScore = 0;
+            console.log (computerScore, humanScore)
+
+        } else if (computerScore === 5) {
+            gameScorer.textContent = 'You lost the game. You can try again!'
+            computerScore = 0;
+            humanScore = 0;
+            console.log (computerScore, humanScore)
         }
     }
+
+
 
 // function playGame() {
 //     let humanScore = 0;
