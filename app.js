@@ -1,8 +1,9 @@
     const choices = document.querySelector("ul")
+    const computerChoiceImg = document.querySelector(".computer-choice-img")
+    const gameScorer = document.querySelector(".game-scorer")
 
     choices.addEventListener('click', (event) => {
         let target = event.target;
-
         switch(target.id) {
             case 'rock':
                 playRound('rock', getComputerChoice())
@@ -18,31 +19,38 @@
     })
 
     function getComputerChoice() {
-        return ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)]
+        const computerChoiceResult = ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)]
+        if (computerChoiceResult === 'paper') {
+        computerChoiceImg.setAttribute('src', `./images/${computerChoiceResult}.jpg`)
+        } else {
+            computerChoiceImg.setAttribute('src', `./images/${computerChoiceResult}.png`)
+        }
+        computerChoiceImg.setAttribute('alt', `${computerChoiceResult}`)
+        return computerChoiceResult
     }
 
-    function getHumanChoice() {
-        return prompt("What will you use? Scissors, Rock, or Paper?").toLowerCase()
-    }
+    // function getHumanChoice() {
+    //     return prompt("What will you use? Scissors, Rock, or Paper?").toLowerCase()
+    // }
 
     function playRound(humanChoice, computerChoice) {
         switch (true) {
             case (humanChoice === computerChoice) :
-                console.log('This round result is a draw!')
+                gameScorer.textContent = 'This round result is a draw!'
                 break;
             case (humanChoice === 'scissors' && computerChoice === 'paper') :
             case (humanChoice === 'paper' && computerChoice === 'rock') :
             case (humanChoice === 'rock' && computerChoice === 'scissors') :
-                console.log('You won this round!');
+                gameScorer.textContent = 'You won this round!';
                 return 'win'
             case (humanChoice === 'scissors' && computerChoice === 'rock') :
             case (humanChoice === 'paper' && computerChoice === 'scissors') :
             case (humanChoice === 'rock' && computerChoice === 'paper') :
-                console.log('You lost this round!');
+                gameScorer.textContent = 'You lost this round!';
                 return 'loss'
 
             default: 
-                console.log('Invalid input! Try again.')
+                gameScorer.textContent('Invalid input! Try again.')
         }
     }
 
@@ -54,15 +62,13 @@
 //         if (gameResult === 'win') {
 //             humanScore++;
 //             console.log(humanScore) 
-    
 //         } else if (gameResult === 'loss') {
 //             computerScore++
 //             console.log(computerScore)
-//         } else if (gameResult === null || undefined) {
+//         } else {
 //             return console.log('Something wrong occured. Try again')
 //         }
-//     }
+//         }
 //     return humanScore > computerScore ? console.log('You won the game!') : console.log('You lost. Try again next time')
 // }
 
-// playGame();
