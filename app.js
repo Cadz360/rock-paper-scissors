@@ -57,33 +57,10 @@
             gameScorer.textContent = 'Congratulations! You won the game!'
             computerScore = 0;
             humanScore = 0;
-            console.log (computerScore, humanScore)
 
         } else if (computerScore === 5) {
             gameScorer.textContent = 'You lost the game. You can try again!'
             computerScore = 0;
             humanScore = 0;
-            console.log (computerScore, humanScore)
         }
     }
-
-
-
-// function playGame() {
-//     let humanScore = 0;
-//     let computerScore = 0;
-//     for(let i = 0; i < 5; i++){
-//         const gameResult = playRound(getHumanChoice(), getComputerChoice());
-//         if (gameResult === 'win') {
-//             humanScore++;
-//             console.log(humanScore) 
-//         } else if (gameResult === 'loss') {
-//             computerScore++
-//             console.log(computerScore)
-//         } else {
-//             return console.log('Something wrong occured. Try again')
-//         }
-//         }
-//     return humanScore > computerScore ? console.log('You won the game!') : console.log('You lost. Try again next time')
-// }
-
