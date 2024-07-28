@@ -32,10 +32,6 @@
         return computerChoiceResult
     }
 
-    // function getHumanChoice() {
-    //     return prompt("What will you use? Scissors, Rock, or Paper?").toLowerCase()
-    // }
-
     function playRound(humanChoice, computerChoice) {
             switch (true) {
             case (humanChoice === computerChoice) :
